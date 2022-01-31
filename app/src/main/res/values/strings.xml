@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">QActivityResultsAPI</string>
+
+    <string name="str_ok">确定</string>
+    <string name="str_cancel">取消</string>
+    <string name="str_delete">删除</string>
+    <string name="delete_pic_confirm">要删除这张照片吗？</string>
+    <string name="all_images">全部图片</string>
+    <string name="str_take_picture">拍照</string>
+    <string name="str_obtain_from_album">从手机相册选取</string>
+    <string name="folder_image_count">共%1$d张</string>
+    <string name="preview_image_count">%1$d/%2$d</string>
+    <string name="select_limit">最多选择%1$d张图片</string>
+    <string name="complete">完成</string>
+    <string name="select_complete">完成(%1$d/%2$d)</string>
+    <string name="preview_count">预览(%1$s)</string>
+    <string name="photo_crop">图片裁剪</string>
+    <string name="origin">原图</string>
+    <string name="origin_size">原图(%1$s)</string>
+    <string name="no_photo">您的手机没有图片</string>
+    <string name="select_photo">选择图片</string>
+    <string name="select">选择</string>
+    <string name="camera">相机</string>
+    <string name="str_settings">去设置</string>
+    <string name="str_permission_title">权限申请</string>
+    <string name="permission_camera">相机</string>
+    <string name="permission_location">位置</string>
+    <string name="permission_storage">存储</string>
+    <string name="permission_call">拨打电话</string>
+    <string name="str_allow_settings">请在设置-应用管理-%1$s-权限中开启%2$s权限，以正常使用各项功能</string>
+    <string name="str_permission_storage_title">存储权限申请</string>
+    <string name="str_permission_camera_title">相机权限申请</string>
+    <string name="str_permission_camera">拍照功能需要获取您手机的相机权限</string>
+    <string name="str_permission_storage_hint_pic">访问相册需要获取您的存储权限</string>
+    <string name="str_nextstep">下一步</string>
+</resources>

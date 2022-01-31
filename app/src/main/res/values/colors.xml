@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="title_text_n">#ffffff</color>
+    <color name="title_text_p">#ff6e18</color>
+    <color name="title_text_d">#C5C5C5</color>
+
+    <color name="theme_body">#cc22292c</color>
+    <color name="status_bar">#FF2E2E2E</color>
+    <color name="top_bar">#9f556061</color>
+    <color name="transparent">#00000000</color>
+    <color name="default_black">#ff2e2e2e</color>
+    <color name="bottom_text_disable">#ff9b9b9b</color>
+
+    <color name="line">#FFEDEDED</color>
+    <color name="line_e">#FFEEEEEE</color>
+
+    <color name="C1">#FF2E2E2E</color>
+    <color name="C2">#FF595959</color>
+    <color name="C3">#FF7A7A7A</color>
+    <color name="C4">#FFA2A2A2</color>
+    <color name="C5">#FFD5D5D5</color>
+    <color name="C6">#FFF5F5F5</color>
+    <color name="C7">#FFFF6E18</color>
+    <color name="C8">#FFF99A55</color>
+    <color name="C9">#FFD85607</color>
+    <color name="C10">#FFFF0000</color>
+    <color name="C11">#FFFFFFFF</color>
+</resources>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+
+    <!-- /storage/emulated/0或者/sdcard/，内置存储，不包括外置SD卡-->
+    <external-path
+        name="external_files"
+        path="." />
+    <!-- /data/data/<package_name>/files -->
+    <files-path
+        name="files_path"
+        path="." />
+    <!-- /data/data/<package_name>/cache -->
+    <cache-path
+        name="cache_path"
+        path="." />
+    <!-- 根目录，也可访问外置SD卡-->
+    <root-path
+        name="root_path"
+        path="" />
+</paths>
