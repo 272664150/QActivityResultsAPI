@@ -14,12 +14,15 @@ import android.widget.TextView;
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.ActivityResultRegistry;
 import androidx.activity.result.contract.ActivityResultContract;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.lifecycle.DefaultLifecycleObserver;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -62,7 +65,7 @@ public class MultiImagesSelectView extends RelativeLayout implements IComponentV
 
     //You need to registerForActivityResult before onStart of the Activity.
     private ActivityResultLauncher mOpenCameraResultLauncher;
-    private ActivityResultLauncher mOpenAlbumResultLauncher;
+    private OpenAlbumResultRegister mOpenAlbumResultRegister;
     private ActivityResultLauncher mPurePreviewResultLauncher;
     private ActivityResultLauncher mPreviewDeleteResultLauncher;
 
@@ -96,6 +99,7 @@ public class MultiImagesSelectView extends RelativeLayout implements IComponentV
             return;
         }
 
+        // 自定义ActivityResultContract的场景
         mOpenCameraResultLauncher = currentActivity.registerForActivityResult(
                 new OpenCameraResultContract(),
                 new ActivityResultCallback<ArrayList<ImageItem>>() {
@@ -104,14 +108,10 @@ public class MultiImagesSelectView extends RelativeLayout implements IComponentV
                         addImages(result);
                     }
                 });
-        mOpenAlbumResultLauncher = currentActivity.registerForActivityResult(
-                new OpenAlbumResultContract(),
-                new ActivityResultCallback<ArrayList<ImageItem>>() {
-                    @Override
-                    public void onActivityResult(ArrayList<ImageItem> result) {
-                        addImages(result);
-                    }
-                });
+        // 在非Activity和Fragment使用的场景
+        mOpenAlbumResultRegister = new OpenAlbumResultRegister(currentActivity.getActivityResultRegistry());
+        currentActivity.getLifecycle().addObserver(mOpenAlbumResultRegister);
+        // 默认ActivityResultContract无返回值的场景
         mPurePreviewResultLauncher = currentActivity.registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {
@@ -119,6 +119,7 @@ public class MultiImagesSelectView extends RelativeLayout implements IComponentV
                     public void onActivityResult(ActivityResult result) {
                     }
                 });
+        // 默认ActivityResultContract有返回值的场景
         mPreviewDeleteResultLauncher = currentActivity.registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {
@@ -307,7 +308,7 @@ public class MultiImagesSelectView extends RelativeLayout implements IComponentV
                     mOpenCameraResultLauncher.launch(getSelectLimit());
                 } else if (1 == position) {
                     // 直接调起相册
-                    mOpenAlbumResultLauncher.launch(getSelectLimit());
+                    mOpenAlbumResultRegister.selectImage(getSelectLimit());
                 }
             };
             mSelectDialog = new SelectDialog(getContext(), R.style.transparentFrameWindowStyle, listener, names);
@@ -438,6 +439,31 @@ public class MultiImagesSelectView extends RelativeLayout implements IComponentV
                 return (ArrayList<ImageItem>) intent.getSerializableExtra(ImagePicker.EXTRA_RESULT_ITEMS);
             }
             return null;
+        }
+    }
+
+    private class OpenAlbumResultRegister implements DefaultLifecycleObserver {
+        private ActivityResultRegistry mRegistry;
+        private ActivityResultLauncher mLauncher;
+
+        OpenAlbumResultRegister(@NonNull ActivityResultRegistry registry) {
+            mRegistry = registry;
+        }
+
+        public void onCreate(@NonNull LifecycleOwner owner) {
+            mLauncher = mRegistry.register("key",
+                    owner,
+                    new OpenAlbumResultContract(),
+                    new ActivityResultCallback<ArrayList<ImageItem>>() {
+                        @Override
+                        public void onActivityResult(ArrayList<ImageItem> result) {
+                            addImages(result);
+                        }
+                    });
+        }
+
+        public void selectImage(int selectLimit) {
+            mLauncher.launch(selectLimit);
         }
     }
 }

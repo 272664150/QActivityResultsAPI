@@ -328,7 +328,6 @@ public class ImagePicker {
     }
 
     /**
-     * add 2021.4.15 by raojianxiong
      * 兼容Android Q 以上通知相册
      *
      * @param context
