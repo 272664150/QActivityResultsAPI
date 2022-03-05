@@ -1,9 +1,9 @@
 # QActivityResultsAPI
 自定义多图选择、展示控件，支持图片预览、添加、删除<br>
-![gif效果图](https://github.com/272664150/QActivityResultsAPI/blob/main/screenshots/1.png)
-![gif效果图](https://github.com/272664150/QActivityResultsAPI/blob/main/screenshots/2.png)
-![gif效果图](https://github.com/272664150/QActivityResultsAPI/blob/main/screenshots/3.png)
-![gif效果图](https://github.com/272664150/QActivityResultsAPI/blob/main/screenshots/4.png)
+<img src="https://github.com/272664150/QScreenshots/blob/main/QMultiImagesSelectView/1.png" height="600" />
+<img src="https://github.com/272664150/QScreenshots/blob/main/QMultiImagesSelectView/2.png" height="600" />
+<img src="https://github.com/272664150/QScreenshots/blob/main/QMultiImagesSelectView/3.png" height="600" />
+<img src="https://github.com/272664150/QScreenshots/blob/main/QMultiImagesSelectView/4.png" height="600" />
 
 1.显示必选星号
 ##
