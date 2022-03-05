@@ -45,6 +45,6 @@
 ##
     app:span_count="xxx"
 
-101.设置最大显示数量
+11.设置最大显示数量
 ##
     app:max_select_count="xxx"
